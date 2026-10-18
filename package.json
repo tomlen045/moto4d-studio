@@ -1,6 +1,6 @@
 {
   "name": "moto4d-studio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "Open-source 4D CAD companion for motorcycle engineering",
   "type": "module",
