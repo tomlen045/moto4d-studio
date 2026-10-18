@@ -1,0 +1,40 @@
+name: Build desktop artifacts
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            architecture: arm64
+            command: npm run dist:mac -- --arm64
+            artifact: Moto4D-macOS-arm64
+          - os: macos-latest
+            architecture: x64
+            command: npm run dist:mac -- --x64
+            artifact: Moto4D-macOS-x64
+          - os: windows-latest
+            architecture: x64
+            command: npm run dist:win
+            artifact: Moto4D-Windows-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: ${{ matrix.command }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: release/*
+          if-no-files-found: error

@@ -1,0 +1,54 @@
+{
+  "name": "moto4d-studio",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Open-source 4D CAD companion for motorcycle engineering",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "desktop": "electron .",
+    "dist:mac": "npm run build && electron-builder --mac dmg zip",
+    "dist:win": "npm run build && electron-builder --win nsis zip"
+  },
+  "dependencies": {
+    "@tx-code/occt-js": "^0.1.7",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "electron": "^39.8.10",
+    "electron-builder": "^26.15.3",
+    "vite": "^7.3.7"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "org.moto4d.studio",
+    "productName": "Moto4D Studio",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.graphics-design"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "artifactName": "Moto4D-Studio-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
