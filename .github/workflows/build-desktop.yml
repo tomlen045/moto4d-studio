@@ -16,15 +16,15 @@ jobs:
         include:
           - os: macos-latest
             architecture: arm64
-            command: npm run dist:mac -- --arm64
+            command: npm run dist:mac -- --arm64 --publish never
             artifact: Moto4D-macOS-arm64
           - os: macos-latest
             architecture: x64
-            command: npm run dist:mac -- --x64
+            command: npm run dist:mac -- --x64 --publish never
             artifact: Moto4D-macOS-x64
           - os: windows-latest
             architecture: x64
-            command: npm run dist:win
+            command: npm run dist:win -- --publish never
             artifact: Moto4D-Windows-x64
     runs-on: ${{ matrix.os }}
     steps:
