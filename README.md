@@ -1,5 +1,7 @@
 # Moto4D Studio
 
+English | [简体中文](README.zh-CN.md)
+
 An open-source, local-first 4D engineering visualization workspace for motorcycle product development. It adds process timelines, simple mechanism previews, and time-varying mesh or point-cloud sequences around CAD data exported from CATIA.
 
 ## What it does
